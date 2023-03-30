@@ -1,6 +1,5 @@
 import React from 'react'
 import Form from './Form'
-import axios from 'axios'
 import { sendPost } from '../api-helpers/frontend/utils'
 
 const Add = () => {
