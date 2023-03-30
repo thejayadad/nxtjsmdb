@@ -6,5 +6,18 @@ export const getAllPost = async () => {
     if(res.status !== 200){
         return new Error("Internal Server Error")
     }
-    const data = await res.data
+    const data = await res.data?.posts;
+
+    return data;
+}
+
+export const getFeaturedPosts = async ()=> {
+    const posts = await getAllPost();
+    if(posts.length == 0){
+        return [];
+    }
+
+    const featuredPosts = posts.filter((post) => post.featured === true)
+
+    return featuredPosts;
 }
