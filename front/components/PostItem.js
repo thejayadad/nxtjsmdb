@@ -1,12 +1,15 @@
 import React from 'react'
 import Link from "next/link"
 import { deletePost } from '../api-helpers/frontend/utils'
+import { useRouter } from 'next/router'
+
 
 const PostItem = ({title, content, id, featured}) => {
+  const router = useRouter();
   const handleDelete = () => {
-    deletePost(id).then((value ) => console.log(value)).then(() => {
+    deletePost(id).then(value=> console.log(value))
       router.push("/posts")
-  } )
+
       .catch(err=> console.log(err))
   }
   return (
