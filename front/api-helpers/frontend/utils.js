@@ -35,3 +35,13 @@ export const sendPost = async (data)=> {
     const resData = await res.data;
     return resData
 }
+
+
+export const getPostFromId = async (id) => {
+    const res = await axios.get(`http://localhost:3000/api/${id}`)
+    if(res.status !==200){
+        return new Error("Unable to get the ID")
+    }
+    const data = await res.data;
+    return data.post;
+}
