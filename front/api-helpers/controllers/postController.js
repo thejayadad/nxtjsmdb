@@ -16,5 +16,18 @@ export const getAllPosts = async(req, res) => {
 }
 
 export const addPost = async (req, res) => {
+    const {title, content} = req.body;
+
+    let post;
+    try {
+        post = new Post({title, content})
+        post = await post.save();
+    } catch (error) {
+        return new Error(error)
+    }
+    if(!post){
+        return res.status(500).json({message: "Internal Server Error"})
+    }
+    return res.status(201).json({post})
 
 }
