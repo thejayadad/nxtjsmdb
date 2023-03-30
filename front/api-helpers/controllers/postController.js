@@ -16,11 +16,11 @@ export const getAllPosts = async(req, res) => {
 }
 
 export const addPost = async (req, res) => {
-    const {title, content} = req.body;
+    const {title, content, featured} = req.body;
 
     let post;
     try {
-        post = new Post({title, content})
+        post = new Post({title, content, featured})
         post = await post.save();
     } catch (error) {
         return new Error(error)
@@ -34,11 +34,11 @@ export const addPost = async (req, res) => {
 
 export const updatePost = async(req, res) => {
     const id = req.query.id;
-const {title, content} = req.body;
+const {title, content, featured} = req.body;
     let post;
     try {
         post = await Post.findByIdAndUpdate(id,{
-            title, content
+            title, content, featured
         })
         post = await post.save();
     } catch (error) {
