@@ -21,3 +21,17 @@ export const getFeaturedPosts = async ()=> {
 
     return featuredPosts;
 }
+
+export const sendPost = async (data)=> {
+    const res = await axios.post("http://localhost:3000/api/posts", {
+        title: data.title,
+        content: data.content,
+        featured: data.featured
+    })
+
+    if(res.status !== 200){
+        return new Error("Rejected by the database")
+    }
+    const resData = await res.data;
+    return resData
+}
