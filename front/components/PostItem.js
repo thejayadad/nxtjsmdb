@@ -7,7 +7,7 @@ const PostItem = ({title, content, id, featured}) => {
         <h3>{title}</h3>
         <p>{content}</p>
         <h5>{featured}</h5>
-        <Link href={`/api/posts/${id}`}>
+        <Link href={`/posts/${id}`}>
         Edit
         </Link>
     </div>

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import {useRouter} from "next/router"
-import { getPostById } from '../api-helpers/controllers/postController';
 import Form from './Form';
 import { getPostFromId } from '../api-helpers/frontend/utils';
 
