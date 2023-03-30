@@ -6,7 +6,7 @@ export default function Home({posts}) {
   return (
     <div>
       <h2>Home</h2>
-      <PostList data={posts} />
+      <PostList getFeaturedPosts data={posts} />
     </div>
   )
 }
