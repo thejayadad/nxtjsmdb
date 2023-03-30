@@ -45,3 +45,27 @@ export const getPostFromId = async (id) => {
     const data = await res.data;
     return data.post;
 }
+
+export const updatePost = async (id, data) => {
+    const res = await axios.put(`http://localhost:3000/api/${id}`, {
+        title: data.title,
+        content: data.content,
+        featured: data.featured
+    })
+    if(res.status !== 200){
+        return new Error("Unable to update")
+    }
+
+    const resData = await res.data
+    return resData;
+}
+
+export const deletePost = async(id)=> {
+    const res = await axios.delete(`http://localhost:3000/api/${id}`)
+    if(res.status !== 200){
+        return new Error("Unable to delete")
+    }
+
+    const resData = await res.data;
+    return resData;
+}

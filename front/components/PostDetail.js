@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import {useRouter} from "next/router"
 import Form from './Form';
-import { getPostFromId } from '../api-helpers/frontend/utils';
+import { getPostFromId, updatePost } from '../api-helpers/frontend/utils';
 
 const PostDetail = () => {
     const [post, setPost] = useState()
@@ -14,7 +14,11 @@ const PostDetail = () => {
     }, [router.query.id])
 
     const getFormData = (data) => {
-
+        updatePost(id, data)
+            .then((value ) => console.log(value)).then(() => {
+                router.push("/posts")
+            } )
+            .catch(err => console.log(err))
     }
 
   return (
